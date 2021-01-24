@@ -11,7 +11,7 @@ echo "instalando os programas..."
 if [ -e "~/../usr/bin/apt-get" ];then
     apt-get update 
     apt-get install $programs -y
-  elif [ -e "~/../usr/bin/pkg"]
+  elif [ -e "~/../usr/bin/pkg" ];then
     pkg update
     pkg install $programs -y
 fi

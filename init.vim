@@ -31,29 +31,9 @@ let g:airline#entensions#tabline#enabled = 1
 let g:airline#entensions#tabline#left_sep = ' '
 let g:airline#entensions#tabline#left_alt_sep = '|'
 let g:airline#entensions#tabline#formatter = 'default'
-  " air-line
 let g:airline_powerline_fonts = 1
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-
-
+" NerdTree
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeColorMapCustom = {
     \ "Staged"    : "#0ee375",  
@@ -254,6 +234,10 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Reanudar la última lista de coc
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" BACKUP
+set writebackup
+set backupdir=.,~/.local/share/nvim/backup
+set dir=.,~/.local/share/nvim/swaps
 " BACKUP
 set writebackup
 set backupdir=.,~/.local/share/nvim/backup

@@ -2,7 +2,7 @@
 let mapleader=" "
 
 " dir plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }

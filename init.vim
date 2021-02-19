@@ -6,18 +6,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"Plug 'tsony-tsonev/nerdtree-git-plugin'
+Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim' " archivos de búsqueda difusa
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
+Plug 'lilydjwg/colorizer'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 call plug#end()
 
@@ -26,30 +26,45 @@ vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
 "vim-airline config 
-let g:airline_theme = 'simple'
+let g:airline_theme = 'deus' " 'simple'
 let g:airline#entensions#tabline#enabled = 1
 let g:airline#entensions#tabline#left_sep = ' '
 let g:airline#entensions#tabline#left_alt_sep = '|'
 let g:airline#entensions#tabline#formatter = 'default'
+  " air-line
 let g:airline_powerline_fonts = 1
 
-": Abre NERDTree automáticamente
-:" Autocmd StdinReadPre * sea s: std_in = 1
-" Autocmd VimEnter * NERDTree
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+
 
 let g:NERDTreeGitStatusWithFlags = 1
-"let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-    "\ "Staged"    : "#0ee375",  
-    "\ "Modified"  : "#d9bf91",  
-    "\ "Renamed"   : "#51C9FC",  
-    "\ "Untracked" : "#FCE77C",  
-    "\ "Unmerged"  : "#FC51E6",  
-    "\ "Dirty"     : "#FFBD61",  
-    "\ "Clean"     : "#87939A",   
-    "\ "Ignored"   : "#808080"   
-    "\ }                         
+let g:NERDTreeColorMapCustom = {
+    \ "Staged"    : "#0ee375",  
+    \ "Modified"  : "#d9bf91",  
+    \ "Renamed"   : "#51C9FC",  
+    \ "Untracked" : "#FCE77C",  
+    \ "Unmerged"  : "#FC51E6",  
+    \ "Dirty"     : "#FFBD61",  
+    \ "Clean"     : "#87939A",   
+    \ "Ignored"   : "#808080"   
+    \ }                         
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " vim-masBonito
@@ -89,12 +104,10 @@ colorscheme gruvbox
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
-  \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ ]
-" de readme
 " si no se establece oculto, TextEdit puede fallar.
 set hidden " Algunos servidores tienen problemas con los archivos de respaldo, consulte # 649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " Tendrá una mala experiencia con los mensajes de diagnóstico cuando el valor predeterminado es 4000.
 set updatetime=300
@@ -159,27 +172,27 @@ let NERDTreeQuitOnOpen=1
 " teclas custom 
 
 " Salir
-nmap <leader>r :q!<cr>
+nmap <leader>0 :q!<cr>
 " Guardar y salir
-nmap <leader>t :wq<cr>
+nmap <leader>9 :wq<cr>
 " Guardar
-nmap <leader>y :w<cr>
+nmap <leader>1 :w<cr>
 " nerdtree
 nmap <leader>n :NERDTreeToggle<cr>
 " Ir a la deficion
-nmap <leader>d gd
+nmap <leader>2 gd
 " ir al archivo de definicor
-nmap <leader>f gf
+nmap <leader>3 gf
 " ir atras 
-nmap <leader>o <C-o>
+nmap <leader>7 <C-o>
 " ir adelante
-nmap <leader>p <C-i>
+nmap <leader>8 <C-i>
 " eliminar linea
-nmap <leader>s d$
+nmap <leader>6 d$
 "change word
-nmap <leader>z ciw
+nmap <leader>4 ciw
 " siguiente buffer
-nmap <C-w> <esc><esc> :bnext<cr>
+nmap <leader>5 <esc><esc> :bnext<cr>
   
 " formatear selecionada
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -241,3 +254,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Reanudar la última lista de coc
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" BACKUP
+set writebackup
+set backupdir=.,~/.local/share/nvim/backup
+set dir=.,~/.local/share/nvim/swaps

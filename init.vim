@@ -10,7 +10,7 @@ Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim' " archivos de búsqueda difusa
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -18,7 +18,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'morhetz/gruvbox'
 Plug 'lilydjwg/colorizer'
-Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'HerringtonDarkholme/yats.vim'
 call plug#end()
 
 inoremap jk <ESC> 
@@ -26,7 +26,7 @@ vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
 "vim-airline config 
-let g:airline_theme = 'deus' " 'simple'
+let g:airline_theme = 'deus'
 let g:airline#entensions#tabline#enabled = 1
 let g:airline#entensions#tabline#left_sep = ' '
 let g:airline#entensions#tabline#left_alt_sep = '|'
@@ -47,15 +47,10 @@ let g:NERDTreeColorMapCustom = {
     \ }                         
 let g:NERDTreeIgnore = ['^node_modules$']
 
-" vim-masBonito
-"let g:prettier#quickfix_enabled = 0
-"let g:prettier#quickfix_auto_focus = 0
 " comando mas bonito para coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" corre mas binito al guardar
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -65,8 +60,6 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 set number relativenumber
-"set relativenumber
-
 set smarttab
 set cindent
 set tabstop=2
@@ -76,7 +69,6 @@ set mouse=a
 set shiftwidth=2
 set noshowmode
 set sw=2
-" siempre utiliza espacios en lugar de tabulaciones
 set expandtab
 
 colorscheme gruvbox
@@ -91,14 +83,9 @@ let g:coc_global_extensions = [
 " si no se establece oculto, TextEdit puede fallar.
 set hidden " Algunos servidores tienen problemas con los archivos de respaldo, consulte # 649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " Tendrá una mala experiencia con los mensajes de diagnóstico cuando el valor predeterminado es 4000.
 set updatetime=300
-
-" no dar | ins-completado-menú | mensajes.
 set shortmess+=c
-
-" mostrar siempre columnas de señales
 set signcolumn=yes
 
-" Use la pestaña para completar el disparador con los caracteres adelante y navegue.
   "Use el comando ': verbose imap <tab>' para asegurarse de que la pestaña no esté asignada por otro complemento.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

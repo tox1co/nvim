@@ -29,5 +29,5 @@ git clone https://github.com/tox1co/nvim ~/.config/nvim/
     echo "set backupdir=.,~/.local/share/nvim/backup" >> ~/.config/nvim/init.vim
     echo "set dir=.,~/.local/share/nvim/swaps" >> ~/.config/nvim/init.vim
 clear
-echo "Listo! Ahora ejecute neovim escribiendo '\e[32mnvim\e[0m' y escriba \e[91m:PlugInstall\e[0m"
+echo "Listo! Ahora ejecute neovim escribiendo 'nvim' y escriba :PlugInstall"
 

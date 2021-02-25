@@ -5,11 +5,8 @@ let mapleader=" "
 call plug#begin('~/.config/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tsony-tsonev/nerdtree-git-plugin'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree' " nav
+Plug 'airblade/vim-gitgutter' " git changes
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
@@ -27,24 +24,13 @@ nmap ++ <plug>NERDCommenterToggle
 
 "vim-airline config 
 let g:airline_theme = 'deus'
-let g:airline#entensions#tabline#enabled = 1
 let g:airline#entensions#tabline#left_sep = ' '
 let g:airline#entensions#tabline#left_alt_sep = '|'
-let g:airline#entensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 
 " NerdTree
-let g:NERDTreeGitStatusWithFlags = 1
-let g:NERDTreeColorMapCustom = {
-    \ "Staged"    : "#0ee375",  
-    \ "Modified"  : "#d9bf91",  
-    \ "Renamed"   : "#51C9FC",  
-    \ "Untracked" : "#FCE77C",  
-    \ "Unmerged"  : "#FC51E6",  
-    \ "Dirty"     : "#FFBD61",  
-    \ "Clean"     : "#87939A",   
-    \ "Ignored"   : "#808080"   
-    \ }                         
 let g:NERDTreeIgnore = ['^node_modules$']
 
 " comando mas bonito para coc
@@ -70,6 +56,7 @@ set shiftwidth=2
 set noshowmode
 set sw=2
 set expandtab
+set encoding=UTF-8
 
 colorscheme gruvbox
 " coc config
@@ -116,6 +103,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <leader>+ <Plug>(coc-rpc.enable)
 
 " Utilice K para mostrar la documentación en la ventana de vista previa
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -159,7 +147,9 @@ nmap <leader>6 d$
 "change word
 nmap <leader>4 ciw
 " siguiente buffer
-nmap <leader>5 <esc><esc> :bnext<cr>
+nmap <leader>5 :bnext<cr>
+nmap <leader>d :bd<cr> 
+nmap <leader>v :e $MYVIMRC<cr>
   
 " formatear selecionada
 xmap <leader>f  <Plug>(coc-format-selected)
@@ -221,10 +211,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Reanudar la última lista de coc
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" BACKUP
-set writebackup
-set backupdir=.,~/.local/share/nvim/backup
-set dir=.,~/.local/share/nvim/swaps
 " BACKUP
 set writebackup
 set backupdir=.,~/.local/share/nvim/backup
